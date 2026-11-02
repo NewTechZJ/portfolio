@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Zalak Joshi's software engineering portfolio, featuring projects, certifications and AI application development.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Zalak Joshi | Software Engineer">
+  <meta property="og:description" content="Projects, certifications and software engineering work by Zalak Joshi.">
+  <meta property="og:type" content="website">
+  <title>Zalak Joshi | Software Engineer</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111418'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='13' font-weight='bold' fill='white' text-anchor='middle'%3EZJ%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #ffffff;
+      --surface: #f6f7f9;
+      --ink: #111418;
+      --muted: #5b6270;
+      --line: #e5e7eb;
+      --accent: #2563eb;
+      --accent-soft: #eaf1fe;
+      --progress-bg: #fdf3e1; --progress: #8a5a0b;
+      --done-bg: #e7f5ec;     --done: #1d6b3a;
+      --planned-bg: #eef0f4;  --planned: #4a5363;
+      --aws-bg: #fff4e5;      --aws: #9a4f00;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+      --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --surface: #161a20;
+        --ink: #e8eaed;
+        --muted: #9aa3b2;
+        --line: #262b33;
+        --accent: #82aaff;
+        --accent-soft: #1b2638;
+        --progress-bg: #3a2c12; --progress: #f2c47a;
+        --done-bg: #15301f;     --done: #8fd6a6;
+        --planned-bg: #222730;  --planned: #b4bccb;
+        --aws-bg: #3a2810;      --aws: #ffb866;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+    .wrap { width: min(100% - 48px, 960px); margin: 0 auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav {
+      min-height: 66px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo { color: var(--ink); font: 500 15px var(--mono); white-space: nowrap; }
+    .logo:hover { text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { color: var(--muted); font-size: 13px; }
+    .nav-links a:hover { color: var(--ink); text-decoration: none; }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 8px 11px;
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    section { padding: 76px 0; border-bottom: 1px solid var(--line); }
+    .hero { padding: 104px 0 88px; }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font: 500 12px var(--mono);
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 790px;
+      margin: 0 0 20px;
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.13;
+      letter-spacing: -.045em;
+      font-weight: 600;
+    }
+    h2 {
+      margin: 0 0 26px;
+      font-size: clamp(24px, 4vw, 30px);
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+    h3 { margin: 12px 0 8px; font-size: 18px; line-height: 1.35; }
+    p { margin-top: 0; }
+    .lead {
+      max-width: 690px;
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 18px);
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 9px 17px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: transparent;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .button:hover { border-color: var(--muted); text-decoration: none; }
+    .button-primary { color: var(--bg); background: var(--ink); border-color: var(--ink); }
+    .button-primary:hover { opacity: .88; }
+    .button-small { min-height: 34px; padding: 6px 13px; font-size: 13px; }
+    .intro-note { margin: 20px 0 0; color: var(--muted); font-size: 13px; }
+
+    .section-intro { max-width: 660px; margin: -14px 0 28px; color: var(--muted); }
+    .about-text { max-width: 720px; color: var(--muted); font-size: 16px; margin: 0; }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--bg);
+    }
+    .card p { flex: 1; margin: 0 0 17px; color: var(--muted); font-size: 14px; }
+    .status {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .status-progress { background: var(--progress-bg); color: var(--progress); }
+    .status-complete { background: var(--done-bg); color: var(--done); }
+    .status-planned  { background: var(--planned-bg); color: var(--planned); }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 17px; }
+    .tag {
+      padding: 3px 8px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--muted);
+      font: 11px var(--mono);
+    }
+    .card-links { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; font-weight: 500; }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .cert {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--bg);
+    }
+    .cert-badge {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--aws-bg);
+      color: var(--aws);
+      font: 600 14px var(--mono);
+    }
+    .cert-body { min-width: 0; flex: 1; }
+    .cert-body h3 { margin: 6px 0 2px; font-size: 17px; }
+    .cert-meta { color: var(--muted); font-size: 13px; margin: 0 0 14px; }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .skill-group { padding: 19px 20px; border: 1px solid var(--line); border-radius: 10px; }
+    .skill-group h3 { margin: 0 0 12px; font-size: 15px; }
+    .skill-group p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .list { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+    .list-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 20px;
+      border-top: 1px solid var(--line);
+    }
+    .list-row:first-child { border-top: 0; }
+    .row-title { font-size: 14px; font-weight: 600; }
+    .row-subtitle { color: var(--muted); font-size: 13px; }
+    .experience-list .list-row { align-items: baseline; }
+    .experience-list .row-title { min-width: 160px; }
+    .experience-list .row-subtitle { text-align: right; }
+
+    .contact { background: var(--surface); border-bottom: 0; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; }
+    .contact-copy { color: var(--muted); }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 22px; font-size: 14px; }
+    form { display: grid; gap: 14px; }
+    label { display: grid; gap: 6px; font-size: 13px; font-weight: 500; }
+    input, textarea {
+      font: inherit;
+      font-size: 15px;
+      padding: 10px 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    textarea { min-height: 130px; resize: vertical; }
+    form .button { justify-self: start; }
+    .hidden { display: none; }
+
+    footer { padding: 25px 0; color: var(--muted); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-links { display: flex; gap: 18px; }
+
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 36px, 960px); }
+      .hero { padding: 76px 0 66px; }
+      section { padding: 60px 0; }
+      .menu-toggle { display: inline-flex; }
+      .nav { position: relative; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% - 1px);
+        left: -18px;
+        right: -18px;
+        padding: 14px 18px 18px;
+        border-bottom: 1px solid var(--line);
+        background: var(--bg);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .nav-links.open { display: flex; }
+      .project-grid, .cert-grid, .skill-grid, .contact-grid { grid-template-columns: 1fr; }
+      .contact-grid { gap: 28px; }
+      .list-row { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .experience-list .row-subtitle { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="logo" href="#top" aria-label="Zalak Joshi, home">zalak.joshi</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
+      <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#learning">Learning</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Hello, I'm Zalak Joshi</p>
+        <h1>Senior Software Engineer building scalable systems and intelligent applications.</h1>
+        <p class="lead">
+          I bring 10+ years of software engineering experience across backend, frontend and
+          cloud-native development. This portfolio showcases projects I'm building, technologies
+          I'm exploring and my continued development in AI application engineering.
+        </p>
+        <div class="actions">
+          <a class="button button-primary" href="#projects">Explore projects</a>
+          <a class="button" href="https://github.com/NewTechZJ" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+        <p class="intro-note">Software engineering · Cloud architecture · AI application development</p>
+      </div>
+    </section>
+
+    <!-- 01 ABOUT -->
+    <section id="about">
+      <div class="wrap">
+        <p class="eyebrow">01 / about</p>
+        <h2>From distributed systems to AI applications</h2>
+        <p class="about-text">
+          I've spent over a decade designing and delivering cloud-native, event-driven systems.
+          Now I'm building hands-on experience with LLMs, RAG architectures and AWS Bedrock.
+          My goal is to bring that production engineering experience to building scalable,
+          reliable AI applications.
+        </p>
+      </div>
+    </section>
+
+    <!-- 02 PROJECTS -->
+    <section id="projects">
+      <div class="wrap">
+        <p class="eyebrow">02 / selected work</p>
+        <h2>Projects</h2>
+        <p class="section-intro">
+          Practical projects and experiments, with the problem each one solves, how it's built
+          and the engineering decisions behind it.
+        </p>
+
+        <div class="project-grid">
+          <!--
+            TODO: Replace with your real project details.
+            Status options: status-progress (In progress), status-complete (Complete), status-planned (Planned).
+            Description: the problem, your approach, and a result or finding.
+          -->
+          <article class="card">
+            <span class="status status-progress">In progress</span>
+            <h3>AI Document Assistant</h3>
+            <p>
+              A question-answering application over a collection of documents, using
+              retrieval-augmented generation to ground answers in source content.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">LLM</span>
+              <span class="tag">RAG</span>
+              <span class="tag">Vector search</span>
+            </div>
+            <div class="card-links">
+              <!-- TODO: Replace # with the repository and demo URLs. Delete "Live demo" if there isn't one. -->
+              <a href="#">Source code</a>
+              <a href="#">Live demo</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <span class="status status-planned">Planned</span>
+            <h3>Intelligent API Assistant</h3>
+            <p>
+              Connecting an LLM to application APIs through structured tool calling, with a
+              focus on API design, safeguards and reliable behaviour.
+            </p>
+            <div class="tags">
+              <span class="tag">Java</span>
+              <span class="tag">Spring Boot</span>
+              <span class="tag">LLM</span>
+              <span class="tag">Tool calling</span>
+            </div>
+            <div class="card-links">
+              <!-- TODO: Replace # with the repository URL once work begins. -->
+              <a href="#">Source code</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 CERTIFICATIONS -->
+    <section id="certifications">
+      <div class="wrap">
+        <p class="eyebrow">03 / credentials</p>
+        <h2>Certifications</h2>
+        <p class="section-intro">Industry certifications, each with a link to verify it with the issuer.</p>
+
+        <div class="cert-grid">
+          <article class="cert">
+            <div class="cert-badge" aria-hidden="true">AWS</div>
+            <div class="cert-body">
+              <span class="status status-complete">Certified</span>
+              <h3>AWS Certified AI Practitioner</h3>
+              <p class="cert-meta">Amazon Web Services</p>
+              <a class="button button-small" href="https://www.credly.com/badges/c82c25f2-acda-43fd-8b38-8d1c0b658589/public_url" target="_blank" rel="noopener noreferrer">Verify credential</a>
+            </div>
+          </article>
+
+          <!--
+            TEMPLATE FOR NEXT CERTIFICATION
+            Copy the block below, remove the comment markers, and fill it in.
+
+            While studying:  <span class="status status-progress">In progress</span>  and delete the Verify button.
+            After passing:   <span class="status status-complete">Certified</span>    and add your Credly link.
+
+          <article class="cert">
+            <div class="cert-badge" aria-hidden="true">AWS</div>
+            <div class="cert-body">
+              <span class="status status-progress">In progress</span>
+              <h3>AWS Certified CERTIFICATION NAME</h3>
+              <p class="cert-meta">Amazon Web Services · Target: MONTH 2027</p>
+            </div>
+          </article>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 LEARNING -->
+    <section id="learning">
+      <div class="wrap">
+        <p class="eyebrow">04 / continuous development</p>
+        <h2>Learning and exploration</h2>
+        <p class="section-intro">
+          Topics I'm studying and applying through hands-on experiments. I'll add project links
+          and practical findings as this work develops.
+        </p>
+
+        <div class="list">
+          <div class="list-row">
+            <div>
+              <div class="row-title">Large language models</div>
+              <div class="row-subtitle">Prompting, model behaviour, evaluation and application patterns</div>
+            </div>
+            <span class="status status-progress">Exploring</span>
+          </div>
+          <div class="list-row">
+            <div>
+              <div class="row-title">Retrieval-augmented generation</div>
+              <div class="row-subtitle">Document ingestion, embeddings, vector search and retrieval quality</div>
+            </div>
+            <span class="status status-progress">Exploring</span>
+          </div>
+          <div class="list-row">
+            <div>
+              <div class="row-title">AWS Bedrock</div>
+              <div class="row-subtitle">Foundation models, knowledge bases and agents</div>
+            </div>
+            <span class="status status-progress">Exploring</span>
+          </div>
+          <div class="list-row">
+            <div>
+              <div class="row-title">AI agents and tool use</div>
+              <div class="row-subtitle">Tool calling, orchestration, reliability and guardrails</div>
+            </div>
+            <span class="status status-progress">Exploring</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 EXPERTISE -->
+    <section id="expertise">
+      <div class="wrap">
+        <p class="eyebrow">05 / technical profile</p>
+        <h2>Technical expertise</h2>
+        <p class="section-intro">
+          Technologies and engineering disciplines I've worked with or am actively exploring.
+        </p>
+
+        <div class="skill-grid">
+          <article class="skill-group">
+            <h3>Backend engineering</h3>
+            <p>Java · Spring Boot · Node.js · NestJS · Python · REST APIs · gRPC · Hibernate</p>
+          </article>
+          <article class="skill-group">
+            <h3>Cloud and architecture</h3>
+            <p>AWS (EC2, ECS, S3, RDS, Lambda) · Azure · Microservices · Distributed systems · Event-driven architecture · Docker · CI/CD</p>
+          </article>
+          <article class="skill-group">
+            <h3>Frontend engineering</h3>
+            <p>JavaScript · TypeScript · React · Redux · HTML5 · CSS3</p>
+          </article>
+          <article class="skill-group">
+            <h3>Data and messaging</h3>
+            <p>PostgreSQL · MySQL · SQL Server · Oracle · Redis · Apache Kafka · AWS SQS/SNS · Azure Service Bus</p>
+          </article>
+          <article class="skill-group">
+            <h3>Testing and engineering tools</h3>
+            <p>JUnit · Jest · Cucumber/Gherkin · JMeter · Postman · Git · GitHub Copilot</p>
+          </article>
+          <article class="skill-group">
+            <h3>AI application development</h3>
+            <p>LLMs · Prompting · RAG · Embeddings · Vector search · AWS Bedrock</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 EXPERIENCE -->
+    <section id="experience">
+      <div class="wrap">
+        <p class="eyebrow">06 / career history</p>
+        <h2>Professional experience</h2>
+        <p class="section-intro">Organisations I've been part of and the designations I held.</p>
+
+        <div class="list experience-list">
+          <div class="list-row">
+            <span class="row-title">Vix Technology</span>
+            <span class="row-subtitle">Senior Software Engineer</span>
+          </div>
+          <div class="list-row">
+            <span class="row-title">Perficient</span>
+            <span class="row-subtitle">Lead Technical Consultant</span>
+          </div>
+          <div class="list-row">
+            <span class="row-title">OneVue</span>
+            <span class="row-subtitle">Senior Software Developer</span>
+          </div>
+          <div class="list-row">
+            <span class="row-title">Infostretch</span>
+            <span class="row-subtitle">Technical Lead</span>
+          </div>
+          <div class="list-row">
+            <span class="row-title">Tata Consultancy Services</span>
+            <span class="row-subtitle">Systems Engineer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 CONTACT -->
+    <section id="contact" class="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="eyebrow">07 / contact</p>
+          <h2>Let's connect</h2>
+          <p class="contact-copy">
+            I'm interested in discussing software engineering, cloud architecture and practical
+            AI applications. Send a message, or connect with me on LinkedIn.
+          </p>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/zalak-joshi-b60b9a76" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/NewTechZJ" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+
+        <!-- Netlify collects these messages. Turn on email notifications in Netlify > Forms. -->
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="company">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden"><label>Leave this empty <input name="company"></label></p>
+          <label>Name<input type="text" name="name" autocomplete="name" required></label>
+          <label>Email<input type="email" name="email" autocomplete="email" required></label>
+          <label>Message<textarea name="message" required></textarea></label>
+          <button type="submit" class="button button-primary">Send message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>© <span id="year">2026</span> Zalak Joshi</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/zalak-joshi-b60b9a76" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/NewTechZJ" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector("#primary-navigation");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      navigation.classList.toggle("open", !isOpen);
+    });
+
+    navigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navigation.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
